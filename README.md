@@ -7,8 +7,8 @@ ThreadCounty is a production-ready, full-stack SaaS platform that allows textile
 ---
 
 ## 🚀 Live Demo & Repository
-- **Live Website:** [ThreadCounty Live](https://threadcounty-22.vercel.app) *(Deploy URL)*
-- **GitHub:** [lalas242/threadcounty-22](https://github.com/lalas242/threadcounty-22)
+- **Live Website:** [https://threadcounty-kappa.vercel.app](https://threadcounty-kappa.vercel.app)
+- **GitHub:** [lalasa-thetakali/threadcounty-22](https://github.com/lalasa-thetakali/threadcounty-22)
 
 ---
 
