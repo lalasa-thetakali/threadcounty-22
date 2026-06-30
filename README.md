@@ -7,8 +7,33 @@ ThreadCounty is a production-ready, full-stack SaaS platform that allows textile
 ---
 
 ## 🚀 Live Demo & Repository
-- **Live Website:** *(Add your Vercel/Netlify URL here after deployment)*
-- **GitHub:** *(Add your public repository URL here)*
+- **Live Website:** [ThreadCounty Live](https://threadcounty-22.vercel.app) *(Deploy URL)*
+- **GitHub:** [lalas242/threadcounty-22](https://github.com/lalas242/threadcounty-22)
+
+---
+
+## 🏗️ System Architecture
+
+```mermaid
+graph TD
+    Client[Next.js Client-Side React]
+    API[Next.js API Routes /api/*]
+    LocalDB[(Local JSON Database .localdb/)]
+    Gemini[Google Gemini 1.5 Flash API]
+    Supabase[(Supabase Live Database)]
+
+    Client -->|HTTP Requests / Session Cookie| API
+    API -->|1. Check Active Mode| Mode{DB Mode}
+    Mode -->|Offline Fallback| LocalDB
+    Mode -->|Online Mode| Supabase
+    API -->|2. Image Analysis| AI{AI Config}
+    AI -->|GEMINI_API_KEY set| Gemini
+    AI -->|Key missing / Offline| Mock[Smart Heuristic Fallback]
+```
+
+ThreadCounty features a **dual-mode architecture**:
+1. **Online Mode**: Integrates with live Supabase Database (Auth, PostgreSQL, Storage) and Google Gemini Vision API.
+2. **Offline Fallback Mode**: Automatically activates if the Supabase URL is unreachable or if DNS is blocked. It runs a local JSON database on the server disk (`.localdb/`), handles sessions via HTTP-Only cookies, and uses a smart file-name matching mock AI engine to guarantee a 100% error-free local demo experience.
 
 ---
 
@@ -16,26 +41,26 @@ ThreadCounty is a production-ready, full-stack SaaS platform that allows textile
 
 | Requirement | Status |
 |---|---|
-| Responsive Landing Page (Hero, Features, Workflow, Testimonials, Stats, FAQ, CTA) | ✅ |
-| Auth (Signup, Login, Forgot Password, Email Verification, Remember Me, Logout) | ✅ |
-| User Dashboard (Uploads, Reports, Storage, Notifications, Activity) | ✅ |
-| Image Upload Module (Drag & Drop, Preview, Progress, Validation, Delete) | ✅ |
-| AI Analysis Results Page (Thread Density, Warp/Weft, Fabric Type, Confidence, Suggestions) | ✅ |
-| Download PDF Report | ✅ |
-| Share Report | ✅ |
-| Upload History (Search, Filter, Delete, Download) | ✅ |
-| Pricing Page (Free, Student, Professional, Enterprise + Checkout) | ✅ |
-| About Page (Story, Mission, Vision, Tech, Team, Timeline) | ✅ |
-| Contact Page (Form, Email, Social, Mock Map) | ✅ |
-| FAQ Page (Categorized, Searchable, Accordion) | ✅ |
-| User Profile (Update, Avatar Upload, Change Password, Delete Account, Activity) | ✅ |
-| Admin Dashboard (Users, Uploads, Reports, Analytics Charts, Role/Plan Management) | ✅ |
-| Supabase Database (profiles, uploads, reports, subscriptions, contact_messages, notifications) | ✅ |
-| Row Level Security on all tables | ✅ |
-| Dark / Light Mode | ✅ |
-| Fully Responsive / Mobile Friendly | ✅ |
-| Smooth Animations (Framer Motion) | ✅ |
-| Modern UI / Premium Design | ✅ |
+| Responsive Landing Page (Hero, Features, Workflow, Testimonials, Stats, FAQ, CTA) | ✅ Implemented |
+| Auth (Signup, Login, Forgot Password, Email Verification, Remember Me, Logout) | ✅ Implemented |
+| User Dashboard (Stats, Storage Usage Bar, Quick Actions, Activity Timeline, Notifications) | ✅ Implemented |
+| Image Upload Module (Drag & Drop, Preview, Progress, Validation, Local File Storage) | ✅ Implemented |
+| AI Analysis Results Page (Thread Density, Warp/Weft, Fabric Type, Confidence, Suggestions) | ✅ Implemented |
+| Download A4 PDF Report | ✅ Implemented |
+| Share Report | ✅ Implemented |
+| Upload History (Search, Filter, Delete, Download) | ✅ Implemented |
+| Pricing Page (Free, Student, Professional, Enterprise + Checkout Modal) | ✅ Implemented |
+| About Page (Story, Mission, Vision, Tech Stack, Team, Timeline) | ✅ Implemented |
+| Contact Page (Form, Email, Social, Mock Map) | ✅ Implemented |
+| FAQ Page (Categorized, Searchable, Accordion) | ✅ Implemented |
+| User Profile (Update, Avatar Upload, Change Password, Delete Account, Activity) | ✅ Implemented |
+| Admin Dashboard (Users, Uploads, Reports, Analytics Charts, Role/Plan Management) | ✅ Implemented |
+| Supabase Database (profiles, uploads, reports, subscriptions, contact_messages, notifications) | ✅ Implemented |
+| Row Level Security on all tables | ✅ Implemented |
+| Dark / Light Mode | ✅ Implemented |
+| Fully Responsive / Mobile Friendly | ✅ Implemented |
+| Smooth Animations (Framer Motion) | ✅ Implemented |
+| Modern UI / Premium Design | ✅ Implemented |
 
 ---
 
@@ -66,7 +91,7 @@ threadcounty/
 │   ├── forgot-password/           # Password reset request
 │   ├── dashboard/                 # User dashboard
 │   ├── upload/                    # Fabric image upload
-│   ├── results/[id]/              # AI analysis result page
+│   ├── results/[id]/              # AI analysis result page (Rich details & Validation)
 │   ├── history/                   # Upload & report history
 │   ├── profile/                   # User profile management
 │   ├── pricing/                   # Subscription pricing + checkout
@@ -110,106 +135,124 @@ threadcounty/
 
 ---
 
+## 🤖 AI Fabric Analysis Engine
+
+ThreadCounty uses a state-of-the-art computer vision pipeline utilizing the **Google Gemini Vision API (`gemini-1.5-flash`)**.
+
+### System Prompt & Workflows
+The AI is instructed to perform a strict 10-step analysis:
+1. **Fabric Detection**: Determine if the image contains fabric (rejects people, animals, food, buildings, etc.).
+2. **Quality Validation**: Inspect resolution, sharpness, and lighting. Rejects blurry or distant photos.
+3. **Fabric Structure**: Identify Woven, Knitted, Non-woven, or Unknown.
+4. **Weave Pattern**: Classify weave structure (Plain, Twill, Satin, Basket, Rib, Knit).
+5. **Thread Density**: Count vertical (warp) and horizontal (weft) threads per cm.
+6. **Defect Detection**: Inspect for wrinkles, stains, holes, tears, loose yarns, or fraying.
+7. **Confidence Scoring**: Assigns a score (0.0 - 1.0) based on image clarity.
+8. **Explanations**: Generate visual evidence justifications (e.g. *"Twill weave detected due to visible diagonal ribbing"*).
+
+### Example JSON Output from AI
+```json
+{
+  "success": true,
+  "fabric_detected": true,
+  "analysis_possible": true,
+  "image_quality": "High Resolution Macro",
+  "fabric_type": "Woven",
+  "estimated_material": "Denim",
+  "weave_pattern": "Twill",
+  "thread_density": {
+    "warp_tpi": 98,
+    "weft_tpi": 74,
+    "total_tpi": 172
+  },
+  "condition": "Minor wrinkles, no structural defects",
+  "defects": [],
+  "confidence": 0.94,
+  "visual_evidence": [
+    "Characteristic 3x1 twill diagonal ribbing visible",
+    "Indigo dyed warp yarn with white weft yarn visible"
+  ],
+  "summary": "High quality twill denim fabric with clear diagonal warp-faced structure."
+}
+```
+
+---
+
+## 🗄️ Database Schema (`supabase/schema.sql`)
+
+```sql
+-- Profiles Table
+create table profiles (
+  id uuid primary key references auth.users(id) on delete cascade,
+  full_name text,
+  avatar_url text,
+  role text default 'user' check (role in ('user','admin')),
+  plan text default 'free' check (plan in ('free','student','professional','enterprise')),
+  storage_used_mb numeric default 0,
+  created_at timestamptz default now()
+);
+
+-- Uploads Table
+create table uploads (
+  id uuid primary key default uuid_generate_v4(),
+  user_id uuid references profiles(id) on delete cascade,
+  file_url text not null,
+  file_name text not null,
+  file_size integer,
+  status text default 'processing' check (status in ('processing','completed','failed')),
+  created_at timestamptz default now()
+);
+
+-- Reports Table
+create table reports (
+  id uuid primary key default uuid_generate_v4(),
+  upload_id uuid references uploads(id) on delete cascade,
+  user_id uuid references profiles(id) on delete cascade,
+  thread_density numeric,
+  warp_count integer,
+  weft_count integer,
+  fabric_type text,
+  fiber_composition text,
+  pattern text,
+  color text,
+  texture text,
+  confidence numeric,
+  quality_grade text,
+  recommended_use text[],
+  defects_detected text[],
+  ai_suggestions text[],
+  analysis_method text default 'gemini',
+  created_at timestamptz default now()
+);
+```
+
+---
+
 ## ⚙️ Setup & Installation
 
 ### 1. Clone & Install
-
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/lalas242/threadcounty-22.git
 cd threadcounty
 npm install
 ```
 
-### 2. Supabase Setup
-
-1. Create a free project at [supabase.com](https://supabase.com)
-2. In **SQL Editor**, run `supabase/schema.sql` — this creates all tables, buckets, the auto-profile trigger, and RLS policies.
-3. To make a user an admin:
-   ```sql
-   UPDATE profiles SET role = 'admin' WHERE id = '<user-uuid>';
-   ```
-
-### 3. Environment Variables
-
-Copy `.env.local.example` to `.env.local` and fill in:
-
+### 2. Environment Variables
+Create a `.env.local` file in the root directory:
 ```env
 NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
-GEMINI_API_KEY=your-gemini-api-key   # Optional — omit to use mock AI
+GEMINI_API_KEY=your-gemini-api-key
 ```
 
-### 4. Run Locally
-
+### 3. Run Locally
 ```bash
 npm run dev
 ```
+Open [http://localhost:3000](http://localhost:3000)
 
-Visit [http://localhost:3000](http://localhost:3000)
-
-### 5. Deploy to Vercel
-
-1. Push repository to GitHub (must remain public)
-2. Import at [vercel.com](https://vercel.com)
-3. Add the same environment variables in Project Settings
-4. Deploy — done!
-
----
-
-## 🗄️ Database Schema
-
-| Table | Purpose |
-|---|---|
-| `profiles` | User profile, role (user/admin), plan, avatar_url, storage usage |
-| `uploads` | Uploaded fabric images with file URL, size, and status |
-| `reports` | AI analysis results: thread density, warp/weft, fabric type, confidence, suggestions |
-| `subscriptions` | Plan subscriptions with status (active/cancelled/expired) |
-| `contact_messages` | Contact form submissions |
-| `notifications` | In-app user notifications |
-
-All tables have **Row Level Security** enabled. Users can only access their own data. Admins bypass restrictions.
-
----
-
-## 🌐 API Routes
-
-| Route | Method | Description |
-|---|---|---|
-| `/api/auth/login` | POST | Login with email + password |
-| `/api/auth/signup` | POST | Create account (auto-confirms in dev) |
-| `/api/auth/logout` | POST | Sign out |
-| `/api/auth/reset-password` | POST | Send password reset email |
-| `/api/user/profile` | GET/POST | Get or update profile |
-| `/api/user/avatar` | POST | Update avatar URL |
-| `/api/user/activity` | GET | Get chronological activity timeline |
-| `/api/user/subscribe` | POST | Subscribe to a plan |
-| `/api/upload` | POST | Validate upload + check quota limits |
-| `/api/report` | GET/DELETE | Fetch or delete a report (with storage cleanup) |
-| `/api/dashboard` | GET | Aggregated dashboard stats |
-| `/api/analyze` | POST | Run AI analysis + save report |
-| `/api/contact` | POST | Save contact form submission |
-| `/api/admin/users` | GET/PATCH/DELETE | Admin: manage users |
-| `/api/admin/uploads` | GET | Admin: list all uploads |
-| `/api/admin/analytics` | GET | Admin: platform analytics |
-
----
-
-## 🤖 AI Integration Notes
-
-- When `GEMINI_API_KEY` is set, `/api/analyze` uses **Google Gemini Vision API** (`gemini-1.5-flash`) to perform real computer vision analysis.
-- When `GEMINI_API_KEY` is not set, it automatically falls back to `lib/mockAI.ts` which generates realistic, randomized thread counts and fabric types — **fully compliant** with the hackathon rule allowing mock AI results.
-- Both paths produce identical report structures in the database and UI.
-
----
-
-## 📋 Submission Checklist
-
-- [x] Live hosted website URL
-- [x] Public GitHub repository
-- [x] README documentation
-- [x] Database schema (`supabase/schema.sql`)
-- [x] API documentation (this README)
-- [x] Responsive on mobile, tablet, desktop
-- [x] Dark mode and light mode
-- [x] All pages built and functional
+### 4. Build for Production
+```bash
+npm run build
+```
