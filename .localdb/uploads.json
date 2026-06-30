@@ -1,0 +1,32 @@
+[
+  {
+    "id": "0626f3a3-e8cd-4be5-bc97-c427671e30eb",
+    "created_at": "2026-06-30T16:35:37.580Z",
+    "user_id": "9be4e9b9-0106-479c-9e29-b6bc8f916dd6",
+    "file_url": "/uploads/9be4e9b9-0106-479c-9e29-b6bc8f916dd6/1782837337393_ChatGPT Image Jun 21, 2026, 10_25_48 PM.png",
+    "file_name": "ChatGPT Image Jun 21, 2026, 10_25_48 PM.png",
+    "file_size": 2202364,
+    "file_path": "9be4e9b9-0106-479c-9e29-b6bc8f916dd6/1782837337393_ChatGPT Image Jun 21, 2026, 10_25_48 PM.png",
+    "status": "completed"
+  },
+  {
+    "id": "0abda64b-e0a0-490e-a62d-42f16d2af7b0",
+    "created_at": "2026-06-30T16:47:28.486Z",
+    "user_id": "9be4e9b9-0106-479c-9e29-b6bc8f916dd6",
+    "file_url": "/uploads/9be4e9b9-0106-479c-9e29-b6bc8f916dd6/1782838048310_Screenshot 2026-06-30 221636.png",
+    "file_name": "Screenshot 2026-06-30 221636.png",
+    "file_size": 1027402,
+    "file_path": "9be4e9b9-0106-479c-9e29-b6bc8f916dd6/1782838048310_Screenshot 2026-06-30 221636.png",
+    "status": "completed"
+  },
+  {
+    "id": "1156534a-a3d4-47bc-adfb-d58087acb04d",
+    "created_at": "2026-06-30T16:47:51.511Z",
+    "user_id": "9be4e9b9-0106-479c-9e29-b6bc8f916dd6",
+    "file_url": "/uploads/9be4e9b9-0106-479c-9e29-b6bc8f916dd6/1782838071425_Screenshot 2026-06-30 221612.png",
+    "file_name": "Screenshot 2026-06-30 221612.png",
+    "file_size": 1421945,
+    "file_path": "9be4e9b9-0106-479c-9e29-b6bc8f916dd6/1782838071425_Screenshot 2026-06-30 221612.png",
+    "status": "completed"
+  }
+]

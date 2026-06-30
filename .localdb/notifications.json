@@ -1,0 +1,66 @@
+[
+  {
+    "id": "9000ffde-d324-4319-ad2f-b7b870b62f65",
+    "created_at": "2026-06-30T16:11:06.606Z",
+    "user_id": "9be4e9b9-0106-479c-9e29-b6bc8f916dd6",
+    "title": "AI Analysis Complete 🎯",
+    "body": "Fabric analysis completed! Identified: Polyester Blend (77% confidence).",
+    "read": false
+  },
+  {
+    "id": "9ffd7954-ea3a-4d2e-9a7c-bb26ded5b31b",
+    "created_at": "2026-06-30T16:11:08.734Z",
+    "user_id": "9be4e9b9-0106-479c-9e29-b6bc8f916dd6",
+    "title": "AI Analysis Complete 🎯",
+    "body": "Fabric analysis completed! Identified: Wool (78% confidence).",
+    "read": false
+  },
+  {
+    "id": "9aede1ba-bec2-4122-a9a8-b20b5c54ff44",
+    "created_at": "2026-06-30T16:31:42.808Z",
+    "user_id": "9be4e9b9-0106-479c-9e29-b6bc8f916dd6",
+    "title": "Analysis Complete — Twill Denim 🎯",
+    "body": "Quality Grade: A+ · Thread Density: 183 t/cm² · Confidence: 94%",
+    "read": false
+  },
+  {
+    "id": "1510a58c-c261-41cc-9cd5-3400c61a18a5",
+    "created_at": "2026-06-30T16:35:03.634Z",
+    "user_id": "9be4e9b9-0106-479c-9e29-b6bc8f916dd6",
+    "title": "Analysis Complete — Linen (Flax) Fabric 🎯",
+    "body": "Quality Grade: A · Thread Density: 113 t/cm² · Confidence: 98%",
+    "read": false
+  },
+  {
+    "id": "5840b346-ff92-44fa-971a-9b7e38e84137",
+    "created_at": "2026-06-30T16:35:39.037Z",
+    "user_id": "9be4e9b9-0106-479c-9e29-b6bc8f916dd6",
+    "title": "Analysis Complete — Linen (Flax) Fabric 🎯",
+    "body": "Quality Grade: A · Thread Density: 123 t/cm² · Confidence: 80%",
+    "read": false
+  },
+  {
+    "id": "60ab2312-b34f-4c2f-ac6c-f222b96c3205",
+    "created_at": "2026-06-30T16:41:16.276Z",
+    "user_id": "9be4e9b9-0106-479c-9e29-b6bc8f916dd6",
+    "title": "Analysis Complete — Silk Satin 🎯",
+    "body": "Density: 330 threads/cm² · Confidence: 95%",
+    "read": false
+  },
+  {
+    "id": "e1751dfb-bf82-4173-b032-0e3bfe179a2a",
+    "created_at": "2026-06-30T16:47:29.897Z",
+    "user_id": "9be4e9b9-0106-479c-9e29-b6bc8f916dd6",
+    "title": "Analysis Complete — Cotton Plain Weave 🎯",
+    "body": "Density: 164 threads/cm² · Confidence: 88%",
+    "read": false
+  },
+  {
+    "id": "1a9c3d9b-5610-4ada-bcc5-a317914325bf",
+    "created_at": "2026-06-30T16:47:52.597Z",
+    "user_id": "9be4e9b9-0106-479c-9e29-b6bc8f916dd6",
+    "title": "Analysis Complete — Denim Twill 🎯",
+    "body": "Density: 172 threads/cm² · Confidence: 94%",
+    "read": false
+  }
+]

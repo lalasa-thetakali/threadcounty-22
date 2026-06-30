@@ -1,0 +1,92 @@
+[
+  {
+    "id": "9e524e7c-b3bd-41d1-bcc1-c3abdcbd80ee",
+    "created_at": "2026-06-30T16:35:39.027Z",
+    "upload_id": "0626f3a3-e8cd-4be5-bc97-c427671e30eb",
+    "user_id": "9be4e9b9-0106-479c-9e29-b6bc8f916dd6",
+    "thread_density": 123,
+    "warp_count": 64,
+    "weft_count": 59,
+    "fabric_type": "Linen (Flax) Fabric",
+    "fiber_composition": "100% Flax Linen",
+    "pattern": "Plain Weave",
+    "color": "Natural Beige",
+    "texture": "Slightly Coarse and Cool to Touch",
+    "confidence": 0.8,
+    "quality_grade": "A",
+    "recommended_use": [
+      "Summer clothing",
+      "Table linen",
+      "Upholstery",
+      "Eco-fashion"
+    ],
+    "defects_detected": [],
+    "ai_suggestions": [
+      "Natural linen with characteristic slubs detected — hand-spun quality confirmed.",
+      "Pre-washing will reduce initial shrinkage by 3–5% — important before cutting.",
+      "Excellent moisture absorption (30% before feeling damp) — ideal for hot climates.",
+      "Enzyme treatment (cellulase) will soften the natural stiffness without weakening."
+    ],
+    "analysis_method": "mock"
+  },
+  {
+    "id": "42aad61f-c616-4aa7-b28e-6bb8aa6f260b",
+    "created_at": "2026-06-30T16:47:29.880Z",
+    "upload_id": "0abda64b-e0a0-490e-a62d-42f16d2af7b0",
+    "user_id": "9be4e9b9-0106-479c-9e29-b6bc8f916dd6",
+    "success": true,
+    "fabric_detected": true,
+    "analysis_possible": true,
+    "thread_density": 164,
+    "warp_count": 84,
+    "weft_count": 80,
+    "fabric_type": "Woven",
+    "fiber_composition": "Cotton",
+    "pattern": "Plain Weave",
+    "color": "Clear close-up",
+    "texture": "No visible defects detected",
+    "confidence": 0.88,
+    "quality_grade": "A",
+    "recommended_use": [
+      "Perpendicular 1x1 interlacing pattern resolved clearly",
+      "Matte fiber texture indicative of natural cotton"
+    ],
+    "defects_detected": [],
+    "ai_suggestions": [
+      "Perpendicular 1x1 interlacing pattern resolved clearly",
+      "Matte fiber texture indicative of natural cotton"
+    ],
+    "summary": "Standard plain weave cotton fabric suitable for apparel manufacturing.",
+    "analysis_method": "mock"
+  },
+  {
+    "id": "6ed52aa3-baec-456b-8b4e-558544e5f4e2",
+    "created_at": "2026-06-30T16:47:52.594Z",
+    "upload_id": "1156534a-a3d4-47bc-adfb-d58087acb04d",
+    "user_id": "9be4e9b9-0106-479c-9e29-b6bc8f916dd6",
+    "success": true,
+    "fabric_detected": true,
+    "analysis_possible": true,
+    "thread_density": 172,
+    "warp_count": 98,
+    "weft_count": 74,
+    "fabric_type": "Woven",
+    "fiber_composition": "Denim",
+    "pattern": "Twill",
+    "color": "High Resolution Macro",
+    "texture": "Good condition with minor creases",
+    "confidence": 0.94,
+    "quality_grade": "B",
+    "recommended_use": [
+      "Characteristic 3x1 twill diagonal ribbing visible",
+      "Indigo dyed warp yarn with white weft yarn visible"
+    ],
+    "defects_detected": [],
+    "ai_suggestions": [
+      "Characteristic 3x1 twill diagonal ribbing visible",
+      "Indigo dyed warp yarn with white weft yarn visible"
+    ],
+    "summary": "High quality twill denim fabric with clear diagonal warp-faced structure.",
+    "analysis_method": "mock"
+  }
+]

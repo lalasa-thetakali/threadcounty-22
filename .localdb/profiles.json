@@ -1,0 +1,20 @@
+[
+  {
+    "id": "9be4e9b9-0106-479c-9e29-b6bc8f916dd6",
+    "full_name": "lalasa",
+    "avatar_url": null,
+    "role": "user",
+    "plan": "free",
+    "storage_used_mb": 0,
+    "created_at": "2026-06-30T15:50:52.613Z"
+  },
+  {
+    "id": "de61b15a-c05d-4413-a042-88243967775f",
+    "full_name": "Test User",
+    "avatar_url": null,
+    "role": "user",
+    "plan": "free",
+    "storage_used_mb": 0,
+    "created_at": "2026-06-30T16:05:32.003Z"
+  }
+]

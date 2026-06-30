@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #4f46e5;
+  --accent: #06b6d4;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(79, 70, 229, 0.15);
+  color: inherit;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 99px; }
+.dark ::-webkit-scrollbar-thumb { background: #374151; }
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Components */
+.btn-primary {
+  @apply bg-primary text-white px-5 py-2.5 rounded-xl font-semibold hover:opacity-90 active:scale-95 transition-all duration-200 shadow-sm;
+}
+
+.btn-outline {
+  @apply border border-primary text-primary px-5 py-2.5 rounded-xl font-semibold hover:bg-primary hover:text-white active:scale-95 transition-all duration-200;
+}
+
+.card {
+  @apply bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl shadow-sm p-6;
+}
+
+.input {
+  @apply w-full border border-gray-200 dark:border-gray-700 bg-transparent rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition text-sm placeholder:text-gray-400 dark:placeholder:text-gray-600;
+}
